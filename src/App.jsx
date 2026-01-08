@@ -87,7 +87,7 @@ export default function App() {
 
     windAccumulatorRef.current += diffAngle;
 
-    const CLICK_THRESHOLD = 30; 
+    const CLICK_THRESHOLD = 100; 
 
     if (windAccumulatorRef.current >= CLICK_THRESHOLD) {
       const click = clickSoundRef.current;
