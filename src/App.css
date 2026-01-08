@@ -1,5 +1,3 @@
-/* src/App.css */
-
 body {
   margin: 0;
   padding: 0;
@@ -16,26 +14,20 @@ body {
   position: relative;
   width: 800px;
   height: 600px;
-  
-  /* 背景画像 */
   background-image: url('/orgel.png'); 
   background-size: cover;
   background-position: center;
-  
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* 上・中・下に要素を配置 */
-  padding: 30px; /* 端っこすぎないように余白を少し広げました */
+  justify-content: space-between;
+  padding: 30px;
   box-sizing: border-box;
 }
 
-/* 黒い背景を削除し、透明なコンテナにしました */
 .control-panel {
-  text-align: right; /* 右寄せにしてスタイリッシュに */
-  /* 文字に影をつけて、明るい背景の上でも読めるようにする */
+  text-align: right;
   text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
@@ -45,20 +37,18 @@ body {
   right: 170px;
 }
 
-/* 曲選択のドロップダウンメニューのデザイン */
 .song-select {
   padding: 10px 15px;
   font-size: 16px;
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.5);
-  background-color: rgba(0, 0, 0, 0.4); /* 少しだけ透けさせる */
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   cursor: pointer;
   outline: none;
-  backdrop-filter: blur(5px); /* すりガラス効果 */
+  backdrop-filter: blur(5px);
 }
 
-/* ドロップダウンの矢印などを調整 */
 .song-select option {
   background-color: #333;
   color: white;

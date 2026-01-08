@@ -21,11 +21,8 @@ export default function App() {
   const audioRef = useRef(new Audio(songList[0].file));
   const rafRef = useRef(null);
 
-  // ▼▼▼ 【追加場所 1】 ▼▼▼
-  // カチッという音と、回転量を溜めるバケツを用意します
   const clickSoundRef = useRef(new Audio("/click.mp3"));
   const windAccumulatorRef = useRef(0);
-  // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -80,40 +77,30 @@ export default function App() {
   }, [duration, isWinding]);
 
 
-  // ▼▼▼ 【追加場所 2】handleWind全体を書き換え ▼▼▼
   const handleWind = (diffAngle) => {
     const audio = audioRef.current;
     if (!duration) return;
 
-    // 1. 今まで通りの巻き戻し計算
     const chargeRatio = diffAngle / MAX_ROTATION_DEG;
     const rewindTime = chargeRatio * duration;
     audio.currentTime = Math.max(audio.currentTime - rewindTime, 0);
 
-    // 2. ここから追加した「カチカチ音」の処理
-    windAccumulatorRef.current += diffAngle; // 回した分を溜める
+    windAccumulatorRef.current += diffAngle;
 
-    // 「45度」溜まったら音を鳴らす
     const CLICK_THRESHOLD = 30; 
 
     if (windAccumulatorRef.current >= CLICK_THRESHOLD) {
       const click = clickSoundRef.current;
       
-      // 音をリセット
       click.pause();
       click.currentTime = 0;
-      
-      // 音程をランダムに変える（リアル感）
       click.playbackRate = 0.9 + Math.random() * 0.2; 
       
-      click.play().catch(e => {}); // 再生
+      click.play().catch(e => {}); 
 
-      // 溜まった分をリセット
       windAccumulatorRef.current = 0; 
     }
   };
-  // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
-
 
   const handleDragStart = () => {
     setIsWinding(true);
