@@ -168,6 +168,11 @@ export default function App() {
             </option>
           ))}
         </select>
+
+        {/* ▼▼▼ 追加したクレジット表記 ▼▼▼ */}
+        <p style={{ marginTop: "15px", fontSize: "0.7rem", opacity: 0.6 }}>
+          素材提供: <a href="https://otologic.jp" target="_blank" rel="noopener noreferrer" style={{color: "white"}}>OtoLogic</a>
+        </p>
       </div>
     </div>
   );
